@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673b0879c3cd4562a7e7c2ba979a227f, type: 3}
+  m_Name: Meat data
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Meat
+  description: Consume to hallucinate and embark on an ego trip like nothing you
+    can imagine nor comprehend. Also heals you.
+  itemHealth: 0
+  itemType: 2
+  icon: {fileID: 21300000, guid: 140259f25527b4dd7bbc4117f95177bd, type: 3}
+  count: 0
+  actions:
+  - {fileID: 11400000, guid: 4104f984187994ec88de41f037f6350d, type: 2}
+  - {fileID: 11400000, guid: 82806c389dc374991917ccdd8887e33c, type: 2}
+  itemId: resource_meat

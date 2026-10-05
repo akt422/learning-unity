@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c922ace2d044dc081ffadc894da8ef6, type: 3}
+  m_Name: DemoDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  entries:
+  - dialogue: Hello
+    dialogueSpeaker: {fileID: 11400000, guid: 4994239d0b08441adabf25be76ec730d, type: 2}
+  - dialogue: What is it that you seek? I will be taking some meat from you, if you
+      have some.
+    dialogueSpeaker: {fileID: 11400000, guid: 29251fd805ecf47739a9a1a74a163772, type: 2}
+  choices:
+  - {fileID: 11400000, guid: 8ffc4db8e9d8948469e5306bc8794d5e, type: 2}
+  - {fileID: 11400000, guid: 8d2ba0083936c49b6bf64e36cd9bd380, type: 2}
+  eventId: 
