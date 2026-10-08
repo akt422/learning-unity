@@ -3,16 +3,32 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using Dialogue;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class InteractionDetector : MonoBehaviour
 {
     private List<IInteractable> interactablesInRange = new List<IInteractable>();
     [SerializeField] private GameObject interactIcon;
-    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private GameObject interactImage;
     [SerializeField] private TMP_Text interactText;
     [SerializeField] private InteractionPromptUI interactionPromptUI; // use this to separate concerns of showing stuff on panel
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // This is so that interactables list is cleared when new scene is loaded. we dont want the list carried over to other scenes
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        interactablesInRange.Clear();
+    }
+    
     private void OnTriggerEnter2D(Collider2D obj)
     {
 
@@ -89,7 +105,7 @@ public class InteractionDetector : MonoBehaviour
         if (!value.isPressed) return;
         if (GameStateManager.GetState() == GameState.Dialogue)
         {
-            dialogueManager.AdvanceDialogue();
+            DialogueManager.Instance.AdvanceDialogue();
             return;
         }
 

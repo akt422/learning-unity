@@ -6,6 +6,12 @@ public static class Bag
 {
     private static List<ItemEntry> items = new List<ItemEntry>();
     public static event Action OnBagChanged;
+    
+    public static void Clear()
+    {
+        items.Clear();
+        OnBagChanged?.Invoke();
+    }
 
     public static void AddItem(ItemData itemData, int amount = 1) // amount can be passed as 3 if 3 are picked up, by default 1.
     {

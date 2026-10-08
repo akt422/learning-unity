@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class ChoiceController : MonoBehaviour
 {
     [SerializeField] private Button choicePrefab;
-    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private GameObject choicePanel;
     private List<Button> buttons = new List<Button>();
     
@@ -30,7 +29,7 @@ public class ChoiceController : MonoBehaviour
             newButton.onClick.AddListener(() =>
             {
                 choicePanel.SetActive(false);
-                dialogueManager.StartDialogue(choice.NextDialogue);
+                DialogueManager.Instance.StartDialogue(choice.NextDialogue);
                 DestroyAllButtons();
             });
         }

@@ -5,19 +5,18 @@ using UnityEngine.Events;
 public class DialogueTriggerListener : MonoBehaviour
 {
     [SerializeField] private UnityEvent response;
-    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private string eventId;
     
     // Will be OnEnable whenever the object this class is attached to is present and enabled in the scene.
     private void OnEnable()
     {
-        dialogueManager.dialogueActionTriggered += HandleDialogueEvent;
+        DialogueManager.Instance.dialogueActionTriggered += HandleDialogueEvent;
     }
 
     // If object this class is attached to is disabled(via checkbox in inspector, say) then OnDisable is true.
     private void OnDisable()
     {
-        dialogueManager.dialogueActionTriggered -= HandleDialogueEvent;
+        DialogueManager.Instance.dialogueActionTriggered -= HandleDialogueEvent;
     }
     
     private void HandleDialogueEvent(string triggeredEventId)

@@ -17,14 +17,24 @@ namespace Dialogue
         [SerializeField] private ChoiceController choiceController;
         private DialogueChoice[] choices;
         private int currLine = 0;
-        [SerializeField] private float typeSpeed = 0.1f;
+        [SerializeField] private float typeSpeed = 0.3f;
         private bool isTyping = false;
         private bool isChoosing = false;
         private Coroutine typingCoroutine;
         [SerializeField] private AudioClip talkingClip;
-        [SerializeField] private AudioManager audioManager;
         public event Action<string> dialogueActionTriggered;
         private string eventId;
+        public static DialogueManager Instance { get; private set; }
+        
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+        }
 
         private IEnumerator TypeLine(string text)
         {
@@ -32,7 +42,7 @@ namespace Dialogue
             dialogueText.text = "";
             foreach (char c in text)
             {
-                audioManager.PlaySound(talkingClip);
+                AudioManager.Instance.PlaySound(talkingClip);
                 dialogueText.text += c;
                 yield return new WaitForSeconds(typeSpeed);
             }
