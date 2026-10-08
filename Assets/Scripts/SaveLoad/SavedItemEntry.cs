@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using UnityEditor.Overlays;
-using UnityEngine;
 
 [System.Serializable]
 public class SavedItemEntry
@@ -13,6 +10,7 @@ public class SavedItemEntry
 [System.Serializable]
 public class SaveData
 {
+    public string sceneName;
     public List<SavedItemEntry> items = new List<SavedItemEntry>();
     public float playerX;
     public float playerY;

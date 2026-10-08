@@ -5,7 +5,6 @@ public class DoorInteract2 : MonoBehaviour, IInteractable
 {
     private bool isLocked = true;
     private bool isOpened = false;
-    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private DialogueData dialogueData;
     [SerializeField] private DialogueData unlockDoorData;
     [SerializeField] private string[] dialogueText;
@@ -14,7 +13,7 @@ public class DoorInteract2 : MonoBehaviour, IInteractable
     private BoxCollider2D bc;
     [SerializeField] private AudioClip lockedDoorClip;
     [SerializeField] private AudioClip openDoorClip;
-    [SerializeField] private AudioSource audioSource;
+    private AudioSource audioSource;
     [SerializeField] private ItemData keyToUnlock;
     private string interactText = "E - Try to open";
 
@@ -22,6 +21,7 @@ public class DoorInteract2 : MonoBehaviour, IInteractable
     {
         sr = GetComponent<SpriteRenderer>();
         bc = GetComponent<BoxCollider2D>();
+        audioSource = AudioManager.Instance.GetComponent<AudioSource>();
     }
     public bool CanInteract()
     {
@@ -36,7 +36,7 @@ public class DoorInteract2 : MonoBehaviour, IInteractable
             {
                 isLocked = false;
                 audioSource.PlayOneShot(openDoorClip);
-                dialogueManager.StartDialogue(unlockDoorData);
+                DialogueManager.Instance.StartDialogue(unlockDoorData);
                 sr.sprite = openDoor;
                 bc.isTrigger = true;
                 isOpened = true;
@@ -44,7 +44,7 @@ public class DoorInteract2 : MonoBehaviour, IInteractable
             else
             {
                 audioSource.PlayOneShot(lockedDoorClip);
-                dialogueManager.StartDialogue(dialogueData);
+                DialogueManager.Instance.StartDialogue(dialogueData);
             }
         }
         else

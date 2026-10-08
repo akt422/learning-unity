@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class KeyInteract : MonoBehaviour, IInteractable
 {
-    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private DialogueData dialogueData;
     [SerializeField] private string[] dialogueText;
     private GameObject keyObject;
     [SerializeField] private DoorInteract2 door;
     private bool collected = false;
-    [SerializeField] private AudioManager audioManager;
     [SerializeField] private AudioClip keyPickClip;
     private string interactText = "E - Pick up";
 
@@ -23,9 +21,9 @@ public class KeyInteract : MonoBehaviour, IInteractable
         if (collected)
             return;
         
-        audioManager.PlaySound(keyPickClip);
+        AudioManager.Instance.PlaySound(keyPickClip);
         collected = true;
-        dialogueManager.StartDialogue(dialogueData);
+        DialogueManager.Instance.StartDialogue(dialogueData);
         gameObject.SetActive(false);
         door.Unlock();
     }
